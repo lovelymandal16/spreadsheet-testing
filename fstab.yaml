@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: https://author-p133911-e1313554.adobeaemcloud.com/bin/franklin.delivery/lovelymandal16/spreadsheet-testing/main
+    url: https://381c-2401-4900-5b83-2321-4c1-9579-dc65-e3de.ngrok-free.app/bin/franklin.delivery/lovelymandal16/spreadsheet-testing/main
     type: "markup"
     suffix: ".html"
