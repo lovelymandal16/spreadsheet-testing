@@ -557,6 +557,15 @@ export default async function decorate(block) {
   let form;
   if (formDef) {
     formDef.action = getSubmitBaseUrl() + (formDef.action || '');
+    const { actionType, spreadsheetUrl } = formDef?.properties || {};
+    if (!formDef?.properties?.['fd:submit'] && actionType === 'spreadsheet' && spreadsheetUrl) {
+      // Check if we're in an iframe and use parent window's path if available
+      const iframePath = window.frameElement ? window.parent.location.pathname
+        : window.location.pathname;
+      formDef.action = SUBMISSION_SERVICE + btoa(pathname || iframePath);
+    } else {
+      formDef.action = getSubmitBaseUrl() + (formDef.action || '');
+    }
     if (isDocumentBasedForm(formDef)) {
       const transform = new DocBasedFormToAF();
       formDef = transform.transform(formDef);
